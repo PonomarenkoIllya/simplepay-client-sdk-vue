@@ -2,7 +2,7 @@
     <div id="spContainer" class="spContainer sp-w-full sp-h-svh sp-mt-2 lg:sp-mt-5">
         <template v-if="isDesktop">
 
-            <Dialog :open="state.isDialogOpen" @update:open="CloseWidget">
+            <Dialog :open="store.isDialogOpen" @update:open="CloseWidget">
                 <DialogContent class="sm:sp-max-w-sm">
                     <Header />
                     <Modal/>
@@ -13,7 +13,7 @@
         </template>
         <template v-else>
 
-            <Drawer :open="state.isDrawerOpen" @update:open="CloseWidget">
+            <Drawer :open="store.isDrawerOpen" @update:open="CloseWidget">
                 <DrawerContent>
                     <Header />
                     <Modal/>
@@ -53,8 +53,6 @@ let mode = useColorMode({
 
 const state = reactive({
     windowWidth: window.innerWidth,
-    isDialogOpen: false,
-    isDrawerOpen: false
 })
 
 const isDesktop = computed(() => {
@@ -63,8 +61,10 @@ const isDesktop = computed(() => {
 
 onMounted(async () => {
 
-    state.isDialogOpen = true;
-    state.isDrawerOpen = true;
+    // state.isDialogOpen = true;
+    // state.isDrawerOpen = true;
+    store.setIsDialogOpen(true);
+    store.setIsDrawerOpen(true);
 
     mode.value = (window.simpleModal.darkMode) ? 'sp-dark' : 'sp-light';
 
@@ -104,10 +104,8 @@ onMounted(async () => {
 })
 
 function CloseWidget(){
-
-    state.isDialogOpen = false;
-    state.isDrawerOpen = false;
-
+    store.setIsDialogOpen(false);
+    store.setIsDrawerOpen(false);
     window.simpleModal.closeModal();
 }
 

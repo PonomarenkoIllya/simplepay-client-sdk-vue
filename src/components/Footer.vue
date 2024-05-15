@@ -46,20 +46,9 @@
         <template v-else-if="store.widgetObject?.step === 'success'">
 
             <template v-if="isDesktop">
-                <DialogClose>
-                    <Button class="sp-w-full sp-cursor-pointer"
-                    >
-                        Return to store
-                    </Button>
-                </DialogClose>
-            </template>
-            <template v-else>
-                <DrawerClose>
-                    <Button class="sp-w-full"
-                    >
-                        Return to store
-                    </Button>
-                </DrawerClose>
+                <Button class="sp-w-full sp-cursor-pointer" @click="CloseWidget">
+                    Return to store
+                </Button>
             </template>
 
         </template>
@@ -80,8 +69,6 @@
     import {computed, onMounted, reactive, ref, watch} from 'vue'
     import AwaitingTransactionIndicator from './ui/AwaitingTransactionIndicator.vue'
     import {SimplePayClient} from 'simplepay-client-sdk-v2';
-    import {DialogClose} from "@/components/ui/dialog";
-    import {DrawerClose} from "@/components/ui/drawer";
 
     const state = reactive({
         windowWidth: window.innerWidth,
@@ -180,6 +167,12 @@
 
         return (await fetch(store.widgetObject?.url, requestOptions)).json();
 
+    }
+
+    const CloseWidget = () => {
+        store.setIsDrawerOpen(false);
+        store.setIsDialogOpen(false);
+        window.simpleModal.closeModal();
     }
 
     onMounted(() => {

@@ -4,7 +4,8 @@ export const useWidgetStore = defineStore('widget', {
     state: () => ({
         widgetObject: {} as any,
         loaderComponentNumber: 0,
-        // nextButtonDisabled: true
+        isDrawerOpen: false,
+        isDialogOpen: false,
     }),
     actions: {
         update(newObject:any) {
@@ -15,6 +16,12 @@ export const useWidgetStore = defineStore('widget', {
         },
         setLoaderComponentNumber(newValue:any){
             this.loaderComponentNumber = newValue;
+        },
+        setIsDrawerOpen(newValue:any){
+            this.isDrawerOpen = newValue;
+        },
+        setIsDialogOpen(newValue:any){
+            this.isDialogOpen = newValue;
         }
     },
 })
