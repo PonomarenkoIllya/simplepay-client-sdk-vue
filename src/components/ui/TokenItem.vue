@@ -1,22 +1,22 @@
 <template>
-    <div @click="SelectToken" 
-        class="cursor-pointer flex w-full justify-between items-center border rounded-lg p-2 hover:bg-secondary"
-        :class="[ (store.widgetObject.tokenId === props.token.id) && 'ring-2 ring-green-400' ]"
+    <div @click="SelectToken"
+         class="sp-cursor-pointer sp-flex sp-w-full sp-justify-between sp-items-center sp-border sp-rounded-lg sp-p-2 hover:sp-bg-secondary"
+         :class="[ (store.widgetObject.tokenId === props.token.id) && 'sp-ring-2 sp-ring-green-400' ]"
     >
-        <div class="flex gap-x-4 items-center">
-            <img :src="props.token.img" class="border bg-background size-8 rounded-full object-cover" />
-            <div class="flex flex-col">
-                <div class="flex gap-x-4 items-center">
-                    <p class="font-bold">
+        <div class="sp-flex sp-gap-x-4 sp-items-center">
+            <img :src="props.token.img" class="sp-border sp-bg-background sp-size-8 sp-rounded-full sp-object-cover" />
+            <div class="sp-flex sp-flex-col">
+                <div class="sp-flex sp-gap-x-4 sp-items-center">
+                    <p class="sp-font-bold">
                         {{ props.token.symbol }}
                     </p>
 
-                    <div v-if="props.token.type !== 'native'" class="text-muted-foreground font-bold py-[2px] bg-secondary px-1 border rounded text-xs">
+                    <div v-if="props.token.type !== 'native'" class="sp-text-muted-foreground sp-font-bold sp-py-[2px] sp-bg-secondary sp-px-1 sp-border sp-rounded sp-text-xs">
                         {{ token.type }}
                     </div>
-                    
+
                 </div>
-                <p class="text-muted-foreground capitalize font-bold text-xs">
+                <p class="sp-text-muted-foreground sp-capitalize sp-font-bold sp-text-xs">
                     {{ token.network }}
                 </p>
             </div>
@@ -25,15 +25,15 @@
 </template>
 
 <script setup lang="ts">
-    import {useWidgetStore} from '../../pinia'
+import {useWidgetStore} from '../../pinia'
 
-    const store = useWidgetStore();
-    const props = defineProps(['token'])
+const store = useWidgetStore();
+const props = defineProps(['token'])
 
-    function SelectToken(){
-        window.simpleModal.setToken(props.token);
-        window.simpleModal.setTokenId(props.token.id);
+function SelectToken(){
+    window.simpleModal.setToken(props.token);
+    window.simpleModal.setTokenId(props.token.id);
 
-        store.update(window.simpleModal);
-    }
+    store.update(window.simpleModal);
+}
 </script>

@@ -1,15 +1,15 @@
 <template>
-    <footer class="flex border-t"
-            :class="[ (store.widgetObject?.step !== 'payment' && store.widgetObject?.step !== 'processing') ? 'gap-x-4 p-4' : 'justify-between items-center w-full p-4' ]"
+    <footer class="sp-flex sp-border-t"
+            :class="[ (store.widgetObject?.step !== 'payment' && store.widgetObject?.step !== 'processing') ? 'sp-gap-x-4 sp-p-4' : 'sp-justify-between sp-items-center sp-w-full sp-p-4' ]"
             >
             
-        <div class="flex gap-x-3 w-full">
+        <div class="sp-flex sp-gap-x-3 sp-w-full">
 
-            <img :src="getProductImage()" class="border bg-secondary size-10 rounded object-cover" />
+            <img :src="getProductImage()" class="sp-border sp-bg-secondary sp-size-10 sp-rounded sp-object-cover" />
 
-            <div class="flex flex-col justify-center">
-                <p class="text-xs font-bold">Total price:</p>
-                <p class="text-xs font-bold">
+            <div class="sp-flex sp-flex-col sp-justify-center">
+                <p class="sp-text-xs sp-font-bold">Total price:</p>
+                <p class="sp-text-xs sp-font-bold">
 
                     <template v-if="store.widgetObject?.product?.price">
                         {{ store.widgetObject?.product?.price?.toFixed(2) }}
@@ -24,7 +24,7 @@
 
         <template v-if="store.widgetObject?.step === 'chooseToken' || store.widgetObject?.step === 'connectWallet' && !connectWalletLoader || store.widgetObject?.step === 'setPrice'">
 
-            <Button class="w-full cursor-pointer"
+            <Button class="sp-w-full sp-cursor-pointer"
                     :disabled="nextButtonDisabled"
                     @click="ButtonClick"
             >
@@ -47,7 +47,7 @@
 
             <template v-if="isDesktop">
                 <DialogClose>
-                    <Button class="w-full cursor-pointer"
+                    <Button class="sp-w-full sp-cursor-pointer"
                     >
                         Return to store
                     </Button>
@@ -55,7 +55,7 @@
             </template>
             <template v-else>
                 <DrawerClose>
-                    <Button class="w-full"
+                    <Button class="sp-w-full"
                     >
                         Return to store
                     </Button>

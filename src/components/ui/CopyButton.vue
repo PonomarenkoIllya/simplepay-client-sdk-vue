@@ -1,11 +1,11 @@
 <template>
     <Button @click="() => CopyToClipboard()"
-            class="text-xs font-bold max-w-20 w-full h-8 cursor-pointer gap-x-2"
-            :class="[ (state.isCopy) && 'text-green-500 bg-green-500_10 hover:bg-green-500/10' ]"
+            class="sp-text-xs sp-font-bold sp-max-w-20 sp-w-full sp-h-8 sp-cursor-pointer sp-gap-x-2"
+            :class="[ (state.isCopy) && 'sp-text-green-500 sp-bg-green-500_10 hover:sp-bg-green-500/10' ]"
             variant="secondary"
     >
         <template v-if="!state.isCopy">
-            <Copy class="size-3 mr-2" />
+            <Copy class="sp-size-3 sp-mr-2" />
             Copy
         </template>
         <template v-else>
@@ -16,9 +16,9 @@
 </template>
 
 <script setup>
-import {Copy, Check} from "lucide-vue-next";
+import {Copy} from "lucide-vue-next";
 import {Button} from "@/components/ui/button";
-import {reactive, ref} from "vue";
+import {reactive} from "vue";
 
 const props = defineProps(['copyText'])
 const state = reactive({

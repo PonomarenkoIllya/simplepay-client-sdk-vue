@@ -3,26 +3,26 @@ import { type VariantProps, cva } from 'class-variance-authority'
 export { default as Button } from './Button.vue'
 
 export const buttonVariants = cva(
-  'inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50',
+  'sp-inline-flex sp-items-center sp-justify-center sp-whitespace-nowrap sp-rounded-md sp-text-sm sp-font-medium sp-ring-offset-background sp-transition-colors focus-visible:sp-outline-none focus-visible:sp-ring-2 focus-visible:sp-ring-ring focus-visible:sp-ring-offset-2 disabled:sp-pointer-events-none disabled:sp-opacity-50',
   {
     variants: {
       variant: {
-        default: 'bg-primary text-primary-foreground hover:bg-primary/90',
+        default: 'sp-bg-primary sp-text-primary-foreground hover:sp-bg-primary/90',
         destructive:
-          'bg-destructive text-destructive-foreground hover:bg-destructive/90',
+          'sp-bg-destructive sp-text-destructive-foreground hover:sp-bg-destructive/90',
         outline:
-          'border border-input bg-background hover:bg-accent hover:text-accent-foreground',
+          'sp-border sp-border-input sp-bg-background hover:sp-bg-accent hover:sp-text-accent-foreground',
         secondary:
-          'bg-secondary text-secondary-foreground hover:bg-secondary/80',
-        ghost: 'hover:bg-accent hover:text-accent-foreground',
-        link: 'text-primary underline-offset-4 hover:underline',
+          'sp-bg-secondary sp-text-secondary-foreground hover:sp-bg-secondary/80',
+        ghost: 'hover:sp-bg-accent hover:sp-text-accent-foreground',
+        link: 'sp-text-primary sp-underline-offset-4 hover:sp-underline',
       },
       size: {
-        default: 'h-10 px-4 py-2',
-        xs: 'h-7 rounded px-2',
-        sm: 'h-9 rounded-md px-3',
-        lg: 'h-11 rounded-md px-8',
-        icon: 'h-10 w-10',
+        default: 'sp-h-10 sp-px-4 sp-py-2',
+        xs: 'sp-h-7 sp-rounded sp-px-2',
+        sm: 'sp-h-9 sp-rounded-md sp-px-3',
+        lg: 'sp-h-11 sp-rounded-md sp-px-8',
+        icon: 'sp-h-10 sp-w-10',
       },
     },
     defaultVariants: {

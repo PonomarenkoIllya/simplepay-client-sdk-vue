@@ -18,11 +18,11 @@ const forwarded = useForwardPropsEmits(props, emits)
     <DrawerContent
         id="simplePayModalContainer"
       v-bind="forwarded" :class="cn(
-        'fixed inset-x-0 bottom-0 z-50 mt-24 flex h-auto flex-col rounded-t-[10px] border bg-background p-0',
+        'sp-fixed sp-inset-x-0 sp-bottom-0 sp-z-50 sp-mt-24 sp-flex sp-h-auto sp-flex-col sp-rounded-t-[10px] sp-border sp-bg-background sp-p-0',
         props.class,
       )"
     >
-      <div class="mx-auto mt-4 h-2 w-[100px] rounded-full bg-muted" />
+      <div class="sp-mx-auto sp-mt-4 sp-h-2 sp-w-[100px] sp-rounded-full sp-bg-muted" />
       <slot />
     </DrawerContent>
   </DrawerPortal>

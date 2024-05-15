@@ -7,7 +7,7 @@ module.exports = {
   ],
   darkMode: ['class'],
   safelist: ["sp-dark"],
-  prefix: "",
+  prefix: "sp-",
 
   content: [
     './pages/**/*.{ts,tsx,vue}',

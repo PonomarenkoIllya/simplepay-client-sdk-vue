@@ -1,11 +1,11 @@
 <template>
-    <div class="flex flex-col">
+    <div class="sp-flex sp-flex-col">
 
         <template v-if="state.tokens === 'loading'">
             <Loader />
         </template>
         <template v-else-if="state.tokens !== 'loading' && state.tokens.length > 0">
-            <div class="max-h-[400px] overflow-y-auto p-2 md:py-0 md:px-1 lg:max-h-full flex flex-col gap-y-2">
+            <div class="sp-max-h-[400px] sp-overflow-y-auto sp-p-2 md:sp-py-0 md:sp-px-1 lg:sp-max-h-full sp-flex sp-flex-col sp-gap-y-2">
 
                 <TokenItem v-for="token in state.tokens" :token="token" :key="token.id" />
 

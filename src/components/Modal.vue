@@ -1,5 +1,5 @@
 <template>
-    <div class="flex flex-col bg-background px-4">
+    <div class="sp-flex sp-flex-col sp-bg-background sp-px-4">
 
         <Loader v-if="store.widgetObject.step === 'loading'"/>
 

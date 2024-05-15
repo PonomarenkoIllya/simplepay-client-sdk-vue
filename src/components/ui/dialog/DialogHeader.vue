@@ -9,7 +9,7 @@ const props = defineProps<{
 
 <template>
   <div
-    :class="cn('flex flex-col gap-y-1.5 text-center sm:text-left', props.class)"
+    :class="cn('sp-flex sp-flex-col sp-gap-y-1.5 sp-text-center sm:sp-text-left', props.class)"
   >
     <slot />
   </div>

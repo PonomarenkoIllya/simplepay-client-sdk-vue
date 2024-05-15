@@ -1,9 +1,9 @@
 <template>
-    <div id="spContainer" class="spContainer w-full h-svh mt-2 lg:mt-5">
+    <div id="spContainer" class="spContainer sp-w-full sp-h-svh sp-mt-2 lg:sp-mt-5">
         <template v-if="isDesktop">
 
             <Dialog :open="state.isDialogOpen" @update:open="CloseWidget">
-                <DialogContent class="sm:max-w-sm">
+                <DialogContent class="sm:sp-max-w-sm">
                     <Header />
                     <Modal/>
                     <Footer />

@@ -1,47 +1,47 @@
 <template>
-    <div class="flex flex-col pb-4 md:pb-0 pt-4 md:pt-0">
+    <div class="sp-flex sp-flex-col sp-pb-4 md:sp-pb-0 sp-pt-4 md:sp-pt-0">
         
-        <Label class="pb-4">
+        <Label class="sp-pb-4">
             <p>Enter your wallet address:</p>
             <Input :placeholder="state.inputPlaceholder" 
-                    class="mt-2" 
+                    class="sp-mt-2"
                     v-model="inputValue"
                     @blur="inputBlur"
             />
-            <p class="mt-2 text-muted-foreground text-xs">Enter the address of the wallet you will use to complete the payment. We need this to track and verify the on-chain transaction as our service is fully decentralised</p>
+            <p class="sp-mt-2 sp-text-muted-foreground sp-text-xs">Enter the address of the wallet you will use to complete the payment. We need this to track and verify the on-chain transaction as our service is fully decentralised</p>
         </Label>
 
         <Separator />
 
-        <p class="mt-4 font-bold text-lg">Payment details:</p>
+        <p class="sp-mt-4 sp-font-bold sp-text-lg">Payment details:</p>
 
-        <div class="flex flex-col gap-y-2 mt-2 text-muted-foreground">
-            <div class="flex gap-x-2">
-                <p class="text-sm font-bold">Network:</p>
-                <p class="text-sm capitalize">{{ store.widgetObject.token?.network }}</p>
+        <div class="sp-flex sp-flex-col sp-gap-y-2 sp-mt-2 sp-text-muted-foreground">
+            <div class="sp-flex sp-gap-x-2">
+                <p class="sp-text-sm sp-font-bold">Network:</p>
+                <p class="sp-text-sm sp-capitalize">{{ store.widgetObject.token?.network }}</p>
             </div>
-            <div class="flex gap-x-2">
-                <p class="text-sm font-bold">Token:</p>
-                <div class="flex gap-x-2 items-center">
-                    <img :src="store.widgetObject.token?.img" class="size-4 rounded-full border bg-secondary" />
-                    <div class="flex gap-x-2 items-center">
-                        <p class="text-sm capitalize">{{ store.widgetObject.token?.symbol }}</p>
-                        <div v-if="store.widgetObject.token?.type !== 'native'" class="text-muted-foreground font-bold py-[2px] bg-secondary px-1 border rounded text-xs">{{ store.widgetObject.token?.type }}</div>
+            <div class="sp-flex sp-gap-x-2">
+                <p class="sp-text-sm sp-font-bold">Token:</p>
+                <div class="sp-flex sp-gap-x-2 sp-items-center">
+                    <img :src="store.widgetObject.token?.img" class="sp-size-4 sp-rounded-full sp-border sp-bg-secondary" />
+                    <div class="sp-flex sp-gap-x-2 sp-items-center">
+                        <p class="sp-text-sm sp-capitalize">{{ store.widgetObject.token?.symbol }}</p>
+                        <div v-if="store.widgetObject.token?.type !== 'native'" class="sp-text-muted-foreground sp-font-bold sp-py-[2px] sp-bg-secondary sp-px-1 sp-border sp-rounded sp-text-xs">{{ store.widgetObject.token?.type }}</div>
                     </div>
                 </div>
             </div>
-            <div class="flex gap-x-2">
-                <p class="text-sm font-bold">Amount:</p>
-                    <p class="text-sm capitalize">
+            <div class="sp-flex sp-gap-x-2">
+                <p class="sp-text-sm sp-font-bold">Amount:</p>
+                    <p class="sp-text-sm sp-capitalize">
 
                         {{ Number( store.widgetObject.product.price / store.widgetObject.token.price ).toFixed(store.widgetObject.token.stable ? 2 : 8) }}
                         
                         {{ store.widgetObject.token?.symbol }}
                     </p>
             </div>
-            <div class="flex flex-col gap-y-1">
-                <p class="text-sm font-bold">From:</p>
-                <p class="text-xs capitalize" :class="{ 'font-bold text-muted-foreground': store.widgetObject.address }">
+            <div class="sp-flex sp-flex-col sp-gap-y-1">
+                <p class="sp-text-sm sp-font-bold">From:</p>
+                <p class="sp-text-xs sp-capitalize" :class="{ 'sp-font-bold sp-text-muted-foreground': store.widgetObject.address }">
                     {{ (store.widgetObject.address) ? store.widgetObject.address : "Please provide your payment address." }}
                 </p>
             </div>

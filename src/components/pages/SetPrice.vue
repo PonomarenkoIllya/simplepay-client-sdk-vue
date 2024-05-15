@@ -1,16 +1,16 @@
 <template>
-    <div class="flex flex-col pt-4 md:pt-0">
+    <div class="sp-flex sp-flex-col sp-pt-4 md:sp-pt-0">
 
-        <Label class="pb-4">
+        <Label class="sp-pb-4">
             <p>Enter your wallet address:</p>
             <Input :placeholder="state.inputPlaceholder"
-                   class="mt-2"
+                   class="sp-mt-2"
                    type="number"
                    v-model="inputValue"
                    @blur="inputBlur"
             />
 
-            <p v-if="state.isError" class="mt-2 text-muted-foreground text-xs text-red-600">
+            <p v-if="state.isError" class="sp-mt-2 sp-text-muted-foreground sp-text-xs sp-text-red-600">
                 The price should be in the range from {{store.widgetObject.minPrice}} to {{store.widgetObject.maxPrice}}
             </p>
         </Label>

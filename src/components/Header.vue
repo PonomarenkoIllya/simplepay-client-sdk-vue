@@ -1,30 +1,30 @@
 <template>
-    <header class="flex justify-between items-center border-b py-4 w-full px-4">
+    <header class="sp-flex sp-justify-between sp-items-center sp-border-b sp-py-4 sp-w-full sp-px-4">
         
-        <div class="flex gap-x-4 items-center">
+        <div class="sp-flex sp-gap-x-4 sp-items-center">
 
             <template v-if="store.widgetObject.step === 'connectWallet' || store.widgetObject.step === 'setPrice'">
-                <div @click="ReturnBack" class="hover:bg-secondary cursor-pointer flex items-center justify-center size-8 rounded-full border">
-                    <ArrowLeft class="size-4" />
+                <div @click="ReturnBack" class="hover:sp-bg-secondary sp-cursor-pointer sp-flex sp-items-center sp-justify-center sp-size-8 sp-rounded-full sp-border">
+                    <ArrowLeft class="sp-size-4" />
                 </div>
             </template>
 
-            <p v-if="store.widgetObject.step === 'chooseToken'" class="text-xl font-bold">
+            <p v-if="store.widgetObject.step === 'chooseToken'" class="sp-text-xl sp-font-bold">
                 Choose token
             </p>
-            <p v-if="store.widgetObject.step === 'setPrice'" class="text-xl font-bold">
+            <p v-if="store.widgetObject.step === 'setPrice'" class="sp-text-xl sp-font-bold">
                 Enter the amount
             </p>
-            <p v-if="store.widgetObject.step === 'connectWallet'" class="text-xl font-bold">
+            <p v-if="store.widgetObject.step === 'connectWallet'" class="sp-text-xl sp-font-bold">
                 Connect wallet
             </p>
-            <p v-if="store.widgetObject.step === 'payment'" class="text-xl font-bold">
+            <p v-if="store.widgetObject.step === 'payment'" class="sp-text-xl sp-font-bold">
                 Awaiting for Payment
             </p>
-            <p v-if="store.widgetObject.step === 'processing'" class="text-xl font-bold">
+            <p v-if="store.widgetObject.step === 'processing'" class="sp-text-xl sp-font-bold">
                 Proсessing transaction
             </p>
-            <p v-if="store.widgetObject.step === 'success'" class="text-xl font-bold">
+            <p v-if="store.widgetObject.step === 'success'" class="sp-text-xl sp-font-bold">
                 Success transaction
             </p>
 
