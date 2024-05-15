@@ -14,11 +14,11 @@ export { toast, useToast } from './use-toast'
 import { type VariantProps, cva } from 'class-variance-authority'
 
 export const toastVariants = cva(
-  'group pointer-events-auto relative flex w-full items-center justify-between gap-x-4 overflow-hidden rounded-md border p-6 pr-8 shadow-lg transition-all data-[swipe=cancel]:translate-x-0 data-[swipe=end]:translate-x-[--radix-toast-swipe-end-x] data-[swipe=move]:translate-x-[--radix-toast-swipe-move-x] data-[swipe=move]:transition-none data-[state=open]:animate-in data-[state=closed]:animate-out data-[swipe=end]:animate-out data-[state=closed]:fade-out-80 data-[state=closed]:slide-out-to-right-full data-[state=open]:slide-in-from-top-full data-[state=open]:sm:slide-in-from-bottom-full',
+  'group sp-pointer-events-auto sp-relative sp-flex sp-w-full sp-items-center sp-justify-between sp-gap-x-4 sp-overflow-hidden sp-rounded-md sp-border sp-p-6 sp-pr-8 sp-shadow-lg sp-transition-all data-[swipe=cancel]:sp-translate-x-0 data-[swipe=end]:sp-translate-x-[--radix-toast-swipe-end-x] data-[swipe=move]:sp-translate-x-[--radix-toast-swipe-move-x] data-[swipe=move]:sp-transition-none data-[state=open]:sp-animate-in data-[state=closed]:sp-animate-out data-[swipe=end]:sp-animate-out data-[state=closed]:sp-fade-out-80 data-[state=closed]:sp-slide-out-to-right-full data-[state=open]:sp-slide-in-from-top-full data-[state=open]:sm:sp-slide-in-from-bottom-full',
   {
     variants: {
       variant: {
-        default: 'border bg-background text-foreground',
+        default: 'sp-border sp-bg-background sp-text-foreground',
         destructive:
                     'destructive group border-destructive bg-destructive text-destructive-foreground',
       },
