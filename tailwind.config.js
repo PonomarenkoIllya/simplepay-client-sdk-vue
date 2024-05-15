@@ -26,45 +26,45 @@ module.exports = {
     },
     extend: {
       colors: {
-        border: "hsl(var(--border))",
-        input: "hsl(var(--input))",
-        ring: "hsl(var(--ring))",
-        background: "hsl(var(--background))",
-        foreground: "hsl(var(--foreground))",
+        border: "hsl(var(--sp-border))",
+        input: "hsl(var(--sp-input))",
+        ring: "hsl(var(--sp-ring))",
+        background: "hsl(var(--sp-background))",
+        foreground: "hsl(var(--sp-foreground))",
         primary: {
-          DEFAULT: "hsl(var(--primary))",
-          foreground: "hsl(var(--primary-foreground))",
+          DEFAULT: "hsl(var(--sp-primary))",
+          foreground: "hsl(var(--sp-primary-foreground))",
         },
         secondary: {
-          DEFAULT: "hsl(var(--secondary))",
-          foreground: "hsl(var(--secondary-foreground))",
+          DEFAULT: "hsl(var(--sp-secondary))",
+          foreground: "hsl(var(--sp-secondary-foreground))",
         },
         destructive: {
-          DEFAULT: "hsl(var(--destructive))",
-          foreground: "hsl(var(--destructive-foreground))",
+          DEFAULT: "hsl(var(--sp-destructive))",
+          foreground: "hsl(var(--sp-destructive-foreground))",
         },
         muted: {
-          DEFAULT: "hsl(var(--muted))",
-          foreground: "hsl(var(--muted-foreground))",
+          DEFAULT: "hsl(var(--sp-muted))",
+          foreground: "hsl(var(--sp-muted-foreground))",
         },
         accent: {
-          DEFAULT: "hsl(var(--accent))",
-          foreground: "hsl(var(--accent-foreground))",
+          DEFAULT: "hsl(var(--sp-accent))",
+          foreground: "hsl(var(--sp-accent-foreground))",
         },
         popover: {
-          DEFAULT: "hsl(var(--popover))",
-          foreground: "hsl(var(--popover-foreground))",
+          DEFAULT: "hsl(var(--sp-popover))",
+          foreground: "hsl(var(--sp-popover-foreground))",
         },
         card: {
-          DEFAULT: "hsl(var(--card))",
-          foreground: "hsl(var(--card-foreground))",
+          DEFAULT: "hsl(var(--sp-card))",
+          foreground: "hsl(var(--sp-card-foreground))",
         },
       },
       borderRadius: {
-      	xl: "calc(var(--radius) + 4px)",
-        lg: "var(--radius)",
-        md: "calc(var(--radius) - 2px)",
-        sm: "calc(var(--radius) - 4px)",
+      	xl: "calc(var(--sp-radius) + 4px)",
+        lg: "var(--sp-radius)",
+        md: "calc(var(--sp-radius) - 2px)",
+        sm: "calc(var(--sp-radius) - 4px)",
       },
       keyframes: {
         "accordion-down": {

@@ -1,36 +1,36 @@
 @tailwind utilities;
 
 :root {
-  --background: 0 0% 100%;
-  --foreground: 240 10% 3.9%;
+  --sp-background: 0 0% 100%;
+  --sp-foreground: 240 10% 3.9%;
 
-  --muted: 240 4.8% 95.9%;
-  --muted-foreground: 240 3.8% 46.1%;
+  --sp-muted: 240 4.8% 95.9%;
+  --sp-muted-foreground: 240 3.8% 46.1%;
 
-  --popover: 0 0% 100%;
-  --popover-foreground: 240 10% 3.9%;
+  --sp-popover: 0 0% 100%;
+  --sp-popover-foreground: 240 10% 3.9%;
 
-  --card: 0 0% 100%;
-  --card-foreground: 240 10% 3.9%;
+  --sp-card: 0 0% 100%;
+  --sp-card-foreground: 240 10% 3.9%;
 
-  --border: 240 5.9% 90%;
-  --input: 240 5.9% 90%;
+  --sp-border: 240 5.9% 90%;
+  --sp-input: 240 5.9% 90%;
 
-  --primary: 240 5.9% 10%;
-  --primary-foreground: 0 0% 98%;
+  --sp-primary: 240 5.9% 10%;
+  --sp-primary-foreground: 0 0% 98%;
 
-  --secondary: 240 4.8% 95.9%;
-  --secondary-foreground: 240 5.9% 10%;
+  --sp-secondary: 240 4.8% 95.9%;
+  --sp-secondary-foreground: 240 5.9% 10%;
 
-  --accent: 240 4.8% 95.9%;
-  --accent-foreground: 240 5.9% 10%;
+  --sp-accent: 240 4.8% 95.9%;
+  --sp-accent-foreground: 240 5.9% 10%;
 
-  --destructive: 0 84.2% 60.2%;
-  --destructive-foreground: 0 0% 98%;
+  --sp-destructive: 0 84.2% 60.2%;
+  --sp-destructive-foreground: 0 0% 98%;
 
-  --ring: 240 10% 3.9%;
+  --sp-ring: 240 10% 3.9%;
 
-  --radius: 0.5rem;
+  --sp-radius: 0.5rem;
 }
 
 .dark {
@@ -66,28 +66,29 @@
 
 #simplePayModalContainer {
   transform: translate(-50%, -50%);
+  color: var(--foreground);
 
   /*borders*/
   .sp-border-border{
-    border: 1px solid hsl(var(--border));
+    border: 1px solid hsl(var(--sp-border));
   }
   .sp-border-b{
-    border-bottom: 1px solid hsl(var(--border));
+    border-bottom: 1px solid hsl(var(--sp-border));
   }
   .sp-border-t{
-    border-top: 1px solid hsl(var(--border));
+    border-top: 1px solid hsl(var(--sp-border));
   }
   .sp-border{
-    border: 1px solid hsl(var(--border));
+    border: 1px solid hsl(var(--sp-border));
   }
   .sp-ring-green-400{
     border-color: #4ade80;
   }
   .sp-border-input {
-    border-color: hsl(var(--input));
+    border-color: hsl(var(--sp-input));
   }
   .sp-ring-offset-background {
-    --tw-ring-offset-color: hsl(var(--background));
+    --tw-ring-offset-color: hsl(var(--sp-background));
   }
   /*.sp-border {*/
   /*  border-width: 1px;*/
@@ -156,13 +157,13 @@
 
   /*colors*/
   .sp-text-foreground{
-    color: hsl(var(--foreground));
+    color: hsl(var(--sp-foreground));
   }
   .sp-text-primary-foreground{
-    color: hsl(var(--primary-foreground));
+    color: hsl(var(--sp-primary-foreground));
   }
   .sp-text-muted-foreground {
-    color: hsl(var(--muted-foreground));
+    color: hsl(var(--sp-muted-foreground));
   }
   .sp-text-red-600 {
     --tw-text-opacity: 1;
@@ -172,24 +173,24 @@
     color: rgb(34 197 94 / 1);
   }
   .sp-text-secondary-foreground {
-    color: hsl(var(--secondary-foreground));
+    color: hsl(var(--sp-secondary-foreground));
   }
 
   /*backgrounds*/
   .sp-bg-primary{
-    background: hsl(var(--primary));
+    background: hsl(var(--sp-primary));
   }
   .sp-bg-background {
-    background-color: hsl(var(--background));
+    background-color: hsl(var(--sp-background));
   }
   .sp-bg-border{
-    background-color: hsl(var(--border));
+    background-color: hsl(var(--sp-border));
   }
   .sp-bg-green-400{
     background-color: #4ade80;
   }
   .sp-bg-secondary {
-    background-color: hsl(var(--secondary));
+    background-color: hsl(var(--sp-secondary));
   }
   .sp-bg-green-500_10{
     background-color: rgb(34 197 94 / 0.1);;
@@ -218,7 +219,7 @@
     box-sizing: border-box;
     border-width: 0;
     border-style: solid;
-    border-color: var(--border);
+    border-color: var(--sp-border);
     margin: 0;
 
   }
