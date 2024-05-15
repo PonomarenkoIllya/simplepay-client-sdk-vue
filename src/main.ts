@@ -9,7 +9,7 @@ declare global {
     }
 }
 
-class SimpleModal {
+export class SimpleModal {
 
     public merchantId: string
     public projectId: string
@@ -158,24 +158,3 @@ class SimpleModal {
         }
     }
 }
-
-const product = {
-    id: 'b8d806ea-8d22-48f1-a74b-71266e65affa',
-    title: 'Product title mfekkemgekgfkmefm kfmekmfe m kfme',
-    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-    img: '', //'https://images.unsplash.com/photo-1598128558393-70ff21433be0?q=80&w=2889&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',//
-    price: 0.01
-}
-
-export default new SimpleModal({
-    projectId: 'f0b135de-a9e1-41b1-a6e1-5413e78a3e3b',
-    merchantId: 'c2ee7172-8295-4ce1-8a5c-cbf311c3ad8e',
-    url: 'https://26e9-62-4-45-209.ngrok-free.app/invoice',
-    callerId: 'openSimpleModal',//id элемента который вызывает модалку
-    product: product,
-    maxPrice: 100,
-    minPrice: 25,
-    // invoiceId: "c9e84b6d-39e6-4b0f-b4e3-3121f9a09015",//82a434af-7809-4e67-bf44-6da90f93a1f5
-    // darkMode: true
-    clientEmail: 'lol'
-});
