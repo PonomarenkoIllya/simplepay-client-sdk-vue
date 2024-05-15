@@ -3,7 +3,7 @@ import { defineStore } from 'pinia'
 export const useWidgetStore = defineStore('widget', {
     state: () => ({
         widgetObject: {} as any,
-        loaderComponentNumber: 0
+        loaderComponentNumber: 0,
         // nextButtonDisabled: true
     }),
     actions: {

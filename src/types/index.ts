@@ -62,15 +62,17 @@ type Product = {
 
 type InitProps = {
   url: string,
+  clientEmail: string,
   callerId?: string,
-  tokenId?: number
+  tokenId?: number,
 }
 
 type ConstructorProps = {
   merchantId: string,
   projectId: string,
   callerId: string , 
-  url: string , 
+  url: string ,
+  clientEmail: string,
   tokenId?: number , 
   product?: Product , 
   invoiceId?: string,

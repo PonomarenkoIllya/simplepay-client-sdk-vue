@@ -163,14 +163,12 @@
 
         const raw = JSON.stringify({
             "merchantId": store.widgetObject.merchantId,
-            "secret_key": "0040e33fc90480b9eb7a56684f75719794b034b7570ea379896b46c5ffce5a81",
             "projectId": store.widgetObject.projectId,
-            "projectSecret": "AOrcTTOFiuCweEK5QkUc4oXbFkrxpCoh1Gzje+rlynI=:XdpcmVII0nvqm1XBEyloWA==",
             "productId": store.widgetObject?.product.id,
             "tokenId": store.widgetObject.token.id,
             "price": store.widgetObject?.product.price,
             "from": store.widgetObject.address,
-            "clientEmail": "ilyakoz1996@gmail.com"
+            "clientEmail": store.widgetObject.clientEmail
         });
 
         const requestOptions:any = {
@@ -180,7 +178,7 @@
             redirect: "follow"
         };
 
-        return (await fetch("https://processing.simplepay.ai/raw/invoice", requestOptions)).json();
+        return (await fetch(store.widgetObject?.url, requestOptions)).json();
 
     }
 

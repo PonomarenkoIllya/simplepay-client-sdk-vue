@@ -25,12 +25,13 @@ export class SimpleModal {
     public invoice: ParsedContractInvoice | null = null;
     public transaction: any | null = null;
     public darkMode: boolean;
+    public clientEmail: string;
     private maxPrice: number;
     private minPrice: number;
     private root: HTMLElement | null = null;
     private new: boolean
 
-    constructor({ merchantId, projectId, callerId, url, tokenId, product, invoiceId, minPrice, maxPrice, darkMode }: ConstructorProps) {
+    constructor({ merchantId, projectId, callerId, url, tokenId, product, invoiceId, minPrice, maxPrice, darkMode, clientEmail }: ConstructorProps) {
         console.log('\n \n 🤘🏻 Open-Source Crypto Payments \n \n 📜 Docs: https://simplepay.ai \n');
         this.merchantId = merchantId
         this.projectId = projectId
@@ -45,7 +46,8 @@ export class SimpleModal {
         this.minPrice = minPrice ?? 1
         this.maxPrice = maxPrice ?? 10000
         this.darkMode = darkMode ?? false
-        this.initialize({ callerId, url, tokenId })
+        this.clientEmail = clientEmail
+        this.initialize({ callerId, url, tokenId, clientEmail })
         const openBtn = document.getElementById(this.callerId);
         if (!url) {
             console.error('[SimplePay]: 🥶 Invalid URL!');
@@ -77,7 +79,7 @@ export class SimpleModal {
         window.simpleModal = this
     }
 
-    private initialize({ callerId, url, tokenId }: InitProps) {
+    private initialize({ callerId, url, tokenId, clientEmail }: InitProps) {
         console.log('🪪 Initializing New Payment widget...');
 
         const createdAt = new Date()
@@ -86,6 +88,7 @@ export class SimpleModal {
         this.tokenId = tokenId ?? null;
         this.step = 'chooseToken'
         this.callerId = callerId ?? 'openSimpleModal';
+        this.clientEmail = clientEmail;
         console.log(this.minPrice, this.maxPrice)
 
         console.log('🚀 Widget is ready!', 'success');
@@ -101,7 +104,7 @@ export class SimpleModal {
 
             console.log('👻 Rendering Payment Window...');
             if (this.new) {
-                this.initialize({ callerId: this.callerId, url: this.url })
+                this.initialize({ callerId: this.callerId, url: this.url, clientEmail: this.clientEmail })
                 this.new = false
             }
 
