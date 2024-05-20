@@ -79,6 +79,7 @@ type ConstructorProps = {
   minPrice?: number,
   maxPrice?: number,
   darkMode?: boolean,
+  customColors?: object
 }
 
 type Steps = "loading" | "chooseToken" | "setPrice" | "connectWallet" | "payment" | "processing" | "success"

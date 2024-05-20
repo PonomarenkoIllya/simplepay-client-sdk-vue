@@ -26,38 +26,38 @@ module.exports = {
     },
     extend: {
       colors: {
-        border: "hsl(var(--sp-border))",
-        input: "hsl(var(--sp-input))",
-        ring: "hsl(var(--sp-ring))",
-        background: "hsl(var(--sp-background))",
-        foreground: "hsl(var(--sp-foreground))",
+        border: "var(--sp-border)",
+        input: "var(--sp-input)",
+        ring: "var(--sp-ring)",
+        background: "var(--sp-background)",
+        foreground: "var(--sp-foreground)",
         primary: {
-          DEFAULT: "hsl(var(--sp-primary))",
-          foreground: "hsl(var(--sp-primary-foreground))",
+          DEFAULT: "var(--sp-primary)",
+          foreground: "var(--sp-primary-foreground)",
         },
         secondary: {
-          DEFAULT: "hsl(var(--sp-secondary))",
-          foreground: "hsl(var(--sp-secondary-foreground))",
+          DEFAULT: "var(--sp-secondary)",
+          foreground: "var(--sp-secondary-foreground)",
         },
         destructive: {
-          DEFAULT: "hsl(var(--sp-destructive))",
-          foreground: "hsl(var(--sp-destructive-foreground))",
+          DEFAULT: "var(--sp-destructive)",
+          foreground: "var(--sp-destructive-foreground)",
         },
         muted: {
-          DEFAULT: "hsl(var(--sp-muted))",
-          foreground: "hsl(var(--sp-muted-foreground))",
+          DEFAULT: "var(--sp-muted)",
+          foreground: "var(--sp-muted-foreground)",
         },
         accent: {
-          DEFAULT: "hsl(var(--sp-accent))",
-          foreground: "hsl(var(--sp-accent-foreground))",
+          DEFAULT: "var(--sp-accent)",
+          foreground: "var(--sp-accent-foreground)",
         },
         popover: {
-          DEFAULT: "hsl(var(--sp-popover))",
-          foreground: "hsl(var(--sp-popover-foreground))",
+          DEFAULT: "var(--sp-popover)",
+          foreground: "var(--sp-popover-foreground)",
         },
         card: {
-          DEFAULT: "hsl(var(--sp-card))",
-          foreground: "hsl(var(--sp-card-foreground))",
+          DEFAULT: "var(--sp-card)",
+          foreground: "var(--sp-card-foreground)",
         },
       },
       borderRadius: {

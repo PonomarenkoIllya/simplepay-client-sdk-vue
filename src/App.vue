@@ -2,7 +2,7 @@
     <div id="spContainer" class="spContainer sp-w-full sp-h-svh sp-mt-2 lg:sp-mt-5">
         <template v-if="isDesktop">
 
-            <Dialog :open="store.isDialogOpen" @update:open="CloseWidget">
+            <Dialog v-model:open="store.isDialogOpen">
                 <DialogContent class="sm:sp-max-w-sm">
                     <Header />
                     <Modal/>
@@ -13,7 +13,7 @@
         </template>
         <template v-else>
 
-            <Drawer :open="store.isDrawerOpen" @update:open="CloseWidget">
+            <Drawer v-model:open="store.isDrawerOpen">
                 <DrawerContent>
                     <Header />
                     <Modal/>
@@ -27,7 +27,7 @@
 </template>
 
 <script setup>
-import { reactive, computed, onMounted } from 'vue'
+import {reactive, computed, onMounted, watch} from 'vue'
 import {useWidgetStore} from './pinia'
 import {
     Dialog,
@@ -42,8 +42,11 @@ import Footer from './components/Footer.vue'
 import Modal from './components/Modal.vue'
 import {SimplePayClient} from "simplepay-client-sdk-v2";
 import { useColorMode } from '@vueuse/core'
+import {storeToRefs} from "pinia";
 
 const store = useWidgetStore();
+const { isDialogOpen, isDrawerOpen } = storeToRefs(store)
+
 let mode = useColorMode({
     modes: {
         light: 'sp-light',
@@ -52,19 +55,50 @@ let mode = useColorMode({
 })
 
 const state = reactive({
-    windowWidth: window.innerWidth,
+    windowWidth: window.innerWidth
 })
 
 const isDesktop = computed(() => {
     return state.windowWidth > 768;
 })
 
+function CloseWidget(){
+    window.simpleModal.closeModal();
+}
+function CheckWidgetContainers(){
+
+    let container = document.querySelector('#simplePayModalContainer:not(:has(#spContainer))');
+
+    if(container)
+        PasteCustomStyles();
+
+}
+function PasteCustomStyles(){
+
+    if(window.simpleModal.customColors && (store.isDrawerOpen || store.isDialogOpen)){
+
+        let widgetContainer = document.querySelector('#simplePayModalContainer:not(:has(#spContainer))');
+
+        Object.keys(window.simpleModal.customColors).map((key) => {
+
+            let propertyKey = `--sp-${key}`;
+            let propertyValue = `${window.simpleModal.customColors[key]}`;
+
+            widgetContainer.style.setProperty( propertyKey, propertyValue );
+
+        })
+
+    }
+}
+
 onMounted(async () => {
 
-    // state.isDialogOpen = true;
-    // state.isDrawerOpen = true;
     store.setIsDialogOpen(true);
     store.setIsDrawerOpen(true);
+
+    setTimeout(function(){
+        PasteCustomStyles();
+    }, 0)
 
     mode.value = (window.simpleModal.darkMode) ? 'sp-dark' : 'sp-light';
 
@@ -103,10 +137,28 @@ onMounted(async () => {
     })
 })
 
-function CloseWidget(){
-    store.setIsDialogOpen(false);
-    store.setIsDrawerOpen(false);
-    window.simpleModal.closeModal();
-}
+watch(isDialogOpen, (newValue) => {
+
+    if(!newValue){
+        store.setIsDrawerOpen(false);
+        CloseWidget();
+    }
+
+});
+watch(isDrawerOpen, (newValue) => {
+
+    if(!newValue){
+        store.setIsDialogOpen(false);
+        CloseWidget();
+    }
+
+});
+watch(isDesktop, (newValue) => {
+
+    setTimeout(function(){
+        CheckWidgetContainers();
+    }, 0)
+
+});
 
 </script>

@@ -26,12 +26,26 @@ export class SimpleModal {
     public transaction: any | null = null;
     public darkMode: boolean;
     public clientEmail: string;
+    public customColors: object | null;
     private maxPrice: number;
     private minPrice: number;
     private root: HTMLElement | null = null;
     private new: boolean
 
-    constructor({ merchantId, projectId, callerId, url, tokenId, product, invoiceId, minPrice, maxPrice, darkMode, clientEmail }: ConstructorProps) {
+    constructor({
+                    merchantId,
+                    projectId,
+                    callerId,
+                    url,
+                    tokenId,
+                    product,
+                    invoiceId,
+                    minPrice,
+                    maxPrice,
+                    darkMode,
+                    clientEmail,
+                    customColors
+                }: ConstructorProps) {
         console.log('\n \n 🤘🏻 Open-Source Crypto Payments \n \n 📜 Docs: https://simplepay.ai \n');
         this.merchantId = merchantId
         this.projectId = projectId
@@ -47,7 +61,8 @@ export class SimpleModal {
         this.maxPrice = maxPrice ?? 10000
         this.darkMode = darkMode ?? false
         this.clientEmail = clientEmail
-        this.initialize({ callerId, url, tokenId, clientEmail })
+        this.customColors = customColors ?? null
+        this.initialize({callerId, url, tokenId, clientEmail})
         const openBtn = document.getElementById(this.callerId);
         console.log(this.callerId)
         if (!url) {
@@ -80,7 +95,7 @@ export class SimpleModal {
         window.simpleModal = this
     }
 
-    private initialize({ callerId, url, tokenId, clientEmail }: InitProps) {
+    private initialize({callerId, url, tokenId, clientEmail}: InitProps) {
         console.log('🪪 Initializing New Payment widget...');
 
         const createdAt = new Date()
@@ -105,7 +120,7 @@ export class SimpleModal {
 
             console.log('👻 Rendering Payment Window...');
             if (this.new) {
-                this.initialize({ callerId: this.callerId, url: this.url, clientEmail: this.clientEmail })
+                this.initialize({callerId: this.callerId, url: this.url, clientEmail: this.clientEmail})
                 this.new = false
             }
 
@@ -114,42 +129,52 @@ export class SimpleModal {
 
         }
     }
+
     public closeModal() {
-        if(document.body.contains(this.root)) {
+        if (document.body.contains(this.root)) {
             this.root?.remove();
             document.querySelector('#simplePayModalContainer')?.remove();
             console.log('🖐🏻 Payment Window closed.');
         }
     }
+
     public setTokenId(tokenId: number) {
         this.tokenId = tokenId
     }
+
     public setToken(token: Token) {
         this.token = token
     }
+
     public setStep(step: Steps) {
         this.step = step
     }
+
     public setAddress(address: string) {
         this.address = address
     }
+
     public setInvoiceId(invoiceId: string) {
         this.invoiceId = invoiceId
     }
+
     public setInvoice(invoice: ParsedContractInvoice) {
         this.invoice = invoice
     }
+
     public setTransaction(transaction: any) {
         this.transaction = transaction
     }
+
     public setProductPrice(price: any) {
 
-        if(!this.product){
+        if (!this.product) {
             this.product = null;
-        }else{
+        } else {
             this.product.price = price
         }
     }
+
     public cancel() {
         const sure = confirm('Are you sure want to cancel invoice?')
         if (sure) {

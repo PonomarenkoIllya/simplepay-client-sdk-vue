@@ -45,11 +45,9 @@
         </template>
         <template v-else-if="store.widgetObject?.step === 'success'">
 
-            <template v-if="isDesktop">
-                <Button class="sp-w-full sp-cursor-pointer" @click="CloseWidget">
-                    Return to store
-                </Button>
-            </template>
+            <Button class="sp-w-full sp-cursor-pointer" @click="CloseWidget">
+                Return to store
+            </Button>
 
         </template>
         <template v-else-if="store.widgetObject?.step === 'connectWallet' && connectWalletLoader">
@@ -133,7 +131,9 @@
 
         }else if(store.widgetObject?.step === 'success'){
 
-            window.simpleModal.closeModal();
+            store.setIsDrawerOpen(false);
+            store.setIsDialogOpen(false);
+            // window.simpleModal.closeModal();
 
         }else{
 
@@ -172,7 +172,7 @@
     const CloseWidget = () => {
         store.setIsDrawerOpen(false);
         store.setIsDialogOpen(false);
-        window.simpleModal.closeModal();
+        // window.simpleModal.closeModal();
     }
 
     onMounted(() => {
