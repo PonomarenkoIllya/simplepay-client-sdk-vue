@@ -6,6 +6,7 @@ export const useWidgetStore = defineStore('widget', {
         loaderComponentNumber: 0,
         isDrawerOpen: false,
         isDialogOpen: false,
+        connectWalletLoader: false
     }),
     actions: {
         update(newObject:any) {
@@ -22,6 +23,9 @@ export const useWidgetStore = defineStore('widget', {
         },
         setIsDialogOpen(newValue:any){
             this.isDialogOpen = newValue;
+        },
+        setConnectWalletLoader(newValue:any){
+            this.connectWalletLoader = newValue;
         }
     },
 })

@@ -37,36 +37,40 @@
   --sp-radius: 0.5rem;
 }
 
-/*.dark {*/
-/*  --background: 240 10% 3.9%;*/
-/*  --foreground: #fafafa;*/
+.sp-dark {
+  --sp-main-color: #ffffff;
+  --sp-background: #09090b;
+  --sp-foreground: #fafafa;
 
-/*  --muted: 240 3.7% 15.9%;*/
-/*  --muted-foreground: 240 5% 64.9%;*/
+  --sp-muted: #27272a;
+  --sp-muted-foreground: #a1a1aa;
 
-/*  --popover: 240 10% 3.9%;*/
-/*  --popover-foreground: #fafafa;*/
+  --sp-popover: #09090b;
+  --sp-popover-foreground: #fafafa;
 
-/*  --card: 240 10% 3.9%;*/
-/*  --card-foreground: #fafafa;*/
+  --sp-card: #09090b;
+  --sp-card-foreground: #fafafa;
 
-/*  --border: 240 3.7% 15.9%;*/
-/*  --input: 240 3.7% 15.9%;*/
+  --sp-border: #27272a;
+  --sp-input: #27272a;
 
-/*  --primary: #fafafa;*/
-/*  --primary-foreground: #18181b;*/
+  --sp-primary: #fafafa;
+  --sp-primary-foreground: #18181b;
 
-/*  --secondary: 240 3.7% 15.9%;*/
-/*  --secondary-foreground: #fafafa;*/
+  --sp-secondary: #27272a;
+  --sp-secondary-foreground: #fafafa;
 
-/*  --accent: 240 3.7% 15.9%;*/
-/*  --accent-foreground: #fafafa;*/
+  --sp-accent: #27272a;
+  --sp-accent-foreground: #fafafa;
 
-/*  --destructive: 0 62.8% 30.6%;*/
-/*  --destructive-foreground: #fafafa;*/
+  --sp-destructive: #7f1d1d;
+  --sp-destructive-foreground: #fafafa;
 
-/*  --ring: 240 4.9% 83.9%;*/
-/*}*/
+  --sp-ring: #d4d4d8;
+  --sp-selected-ring: #4ade80;
+
+  --sp-error: #dc2828;
+}
 
 #simplePayModalContainer {
   transform: translate(-50%, -50%);

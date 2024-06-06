@@ -62,7 +62,7 @@ type Product = {
 
 type InitProps = {
   url: string,
-  clientEmail: string,
+  clientEmail?: string,
   callerId?: string,
   tokenId?: number,
 }
@@ -72,14 +72,17 @@ type ConstructorProps = {
   projectId: string,
   callerId: string , 
   url: string ,
-  clientEmail: string,
+  clientEmail?: string,
   tokenId?: number , 
   product?: Product , 
   invoiceId?: string,
   minPrice?: number,
   maxPrice?: number,
   darkMode?: boolean,
-  customColors?: object
+  customColors?: object,
+  isOpenImmediately?: boolean,
+  isEmailEmpty?: boolean;
+  isPriceEmpty?: boolean;
 }
 
-type Steps = "loading" | "chooseToken" | "setPrice" | "connectWallet" | "payment" | "processing" | "success"
+type Steps = "loading" | "setEmail" | "chooseToken" | "setPrice" | "connectWallet" | "payment" | "processing" | "success"

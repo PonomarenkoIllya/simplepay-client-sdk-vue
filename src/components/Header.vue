@@ -3,12 +3,37 @@
         
         <div class="sp-flex sp-gap-x-4 sp-items-center">
 
-            <template v-if="store.widgetObject.step === 'connectWallet' || store.widgetObject.step === 'setPrice'">
-                <div @click="ReturnBack" class="hover:sp-bg-secondary sp-cursor-pointer sp-flex sp-items-center sp-justify-center sp-size-8 sp-rounded-full sp-border">
-                    <ArrowLeft class="sp-size-4" />
-                </div>
-            </template>
+            <div v-if="store.widgetObject.step === 'connectWallet' && store.widgetObject.isPriceEmpty"
+                 @click="GoToStep('setPrice')"
+                 class="hover:sp-bg-secondary sp-cursor-pointer sp-flex sp-items-center sp-justify-center sp-size-8 sp-rounded-full sp-border"
+            >
+                <ArrowLeft class="sp-size-4" />
+            </div>
 
+            <div v-if="store.widgetObject.step === 'connectWallet' && !store.widgetObject.isPriceEmpty"
+                 @click="GoToStep('chooseToken')"
+                 class="hover:sp-bg-secondary sp-cursor-pointer sp-flex sp-items-center sp-justify-center sp-size-8 sp-rounded-full sp-border"
+            >
+                <ArrowLeft class="sp-size-4" />
+            </div>
+
+            <div v-if="store.widgetObject.step === 'setPrice'"
+                 @click="GoToStep('chooseToken')"
+                 class="hover:sp-bg-secondary sp-cursor-pointer sp-flex sp-items-center sp-justify-center sp-size-8 sp-rounded-full sp-border"
+            >
+                <ArrowLeft class="sp-size-4" />
+            </div>
+
+            <div v-if="store.widgetObject.step === 'chooseToken' && store.widgetObject.isEmailEmpty"
+                 @click="GoToStep('setEmail')"
+                 class="hover:sp-bg-secondary sp-cursor-pointer sp-flex sp-items-center sp-justify-center sp-size-8 sp-rounded-full sp-border"
+            >
+                <ArrowLeft class="sp-size-4" />
+            </div>
+
+            <p v-if="store.widgetObject.step === 'setEmail'" class="sp-text-xl sp-font-bold">
+                Enter email
+            </p>
             <p v-if="store.widgetObject.step === 'chooseToken'" class="sp-text-xl sp-font-bold">
                 Choose token
             </p>
@@ -40,8 +65,8 @@
 
     const store = useWidgetStore();
 
-    function ReturnBack(){
-        window.simpleModal.setStep('chooseToken')
+    function GoToStep(stepName){
+        window.simpleModal.setStep(stepName)
         store.update(window.simpleModal);   
     }
 

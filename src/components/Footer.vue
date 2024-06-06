@@ -22,12 +22,15 @@
             </div>
         </div>
 
-        <template v-if="store.widgetObject?.step === 'chooseToken' || store.widgetObject?.step === 'connectWallet' && !connectWalletLoader || store.widgetObject?.step === 'setPrice'">
+        <template v-if="store.widgetObject?.step === 'chooseToken' || store.widgetObject?.step === 'connectWallet' && !store.connectWalletLoader || store.widgetObject?.step === 'setPrice' || store.widgetObject?.step === 'setEmail'">
 
             <Button class="sp-w-full sp-cursor-pointer"
                     :disabled="nextButtonDisabled"
                     @click="ButtonClick"
             >
+                <template v-if="store.widgetObject?.step === 'setEmail'">
+                    Next
+                </template>
 
                 <template v-if="store.widgetObject?.step === 'chooseToken'">
                     Next
@@ -50,7 +53,7 @@
             </Button>
 
         </template>
-        <template v-else-if="store.widgetObject?.step === 'connectWallet' && connectWalletLoader">
+        <template v-else-if="store.widgetObject?.step === 'connectWallet' && store.connectWalletLoader">
             <AwaitingTransactionIndicator />
         </template>
         <template v-else>
@@ -64,24 +67,23 @@
     import Button from './ui/button/Button.vue';
     import {useWidgetStore} from '../pinia'
     import { storeToRefs } from 'pinia'
-    import {computed, onMounted, reactive, ref, watch} from 'vue'
+    import {onMounted, reactive, ref, watch} from 'vue'
     import AwaitingTransactionIndicator from './ui/AwaitingTransactionIndicator.vue'
-    import {SimplePayClient} from 'simplepay-client-sdk-v2';
+    // import {SimplePayClient} from 'simplepay-client-sdk-v2';
 
     const state = reactive({
         windowWidth: window.innerWidth,
         imagePlaceholder: 'https://cdn4.iconfinder.com/data/icons/e-commerce-289/64/ecomerce_shopping_shippement_box_product-512.png'
     })
 
-    const isDesktop = computed(() => {
-        return state.windowWidth > 768;
-    })
+    // const isDesktop = computed(() => {
+    //     return state.windowWidth > 768;
+    // })
 
     const store = useWidgetStore();
     const { widgetObject } = storeToRefs(store)
 
     let nextButtonDisabled:any = ref( true );
-    let connectWalletLoader:any = ref( false );
 
     const getProductImage = () => {
 
@@ -90,23 +92,27 @@
             : state.imagePlaceholder!;
 
     }
-    function InvoiceIssuedCallback(invoice:any){
-        window.simpleModal.setInvoiceId(invoice.invoiceId);
-        window.simpleModal.setInvoice(invoice);
-
-        store.update(window.simpleModal);
-
-        window.simpleModal.setStep('payment');
-        store.update(window.simpleModal);
-
-        connectWalletLoader = false;
-    }
+    // function InvoiceIssuedCallback(invoice:any){
+    //
+    //     console.log('InvoiceIssuedCallback', invoice)
+    //
+    //     window.simpleModal.setInvoiceId(invoice.invoiceId);
+    //     window.simpleModal.setInvoice(invoice);
+    //
+    //     store.update(window.simpleModal);
+    //
+    //     window.simpleModal.setStep('payment');
+    //     store.update(window.simpleModal);
+    //
+    //     connectWalletLoader = false;
+    // }
     async function ButtonClick() {
 
         const chooseStep = (step: Steps) => {
 
-            if (step === 'chooseToken' && store.widgetObject?.product?.price) return 'connectWallet'
-            if (step === 'chooseToken' && !store.widgetObject?.product?.price) return 'setPrice'
+            if (step === 'chooseToken' && !store.widgetObject.isPriceEmpty) return 'connectWallet'
+            if (step === 'chooseToken' && store.widgetObject.isPriceEmpty) return 'setPrice'
+            if (step === 'setEmail') return 'chooseToken'
             if (step === 'setPrice') return 'connectWallet'
 
             return 'payment'
@@ -115,19 +121,19 @@
 
         if(store.widgetObject?.step === 'connectWallet'){
 
-            connectWalletLoader = true;
+            store.setConnectWalletLoader(true);
 
-            let result = await GetInvoice();
+            await GetInvoice();
 
-            if(result){
-
-                window.simpleModal.setInvoiceId(result.invoiceId);
-                store.update(window.simpleModal);
-
-                const sp = new SimplePayClient(store.widgetObject.merchantId, store.widgetObject.projectId);
-                sp.subscribe('InvoiceIssued', (invoice:any) => { InvoiceIssuedCallback(invoice) });
-
-            }
+            // if(result){
+            //
+            //     window.simpleModal.setInvoiceId(result.invoiceId);
+            //     store.update(window.simpleModal);
+            //
+            //     const sp = new SimplePayClient(store.widgetObject.merchantId, store.widgetObject.projectId);
+            //     sp.subscribe('InvoiceIssued', (invoice:any) => { InvoiceIssuedCallback(invoice) });
+            //
+            // }
 
         }else if(store.widgetObject?.step === 'success'){
 
@@ -165,8 +171,15 @@
             redirect: "follow"
         };
 
-        return (await fetch(store.widgetObject?.url, requestOptions)).json();
+        const response = await fetch(store.widgetObject?.url, requestOptions);
 
+        if (response) {
+            if (response.redirected) {
+                setTimeout(() => {
+                    window.location.href = response.url;
+                }, 5000);
+            }
+        }
     }
 
     const CloseWidget = () => {
@@ -174,6 +187,14 @@
         store.setIsDialogOpen(false);
         // window.simpleModal.closeModal();
     }
+
+    const validateEmail = (email:string) => {
+        return String(email)
+            .toLowerCase()
+            .match(
+                /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+            );
+    };
 
     onMounted(() => {
         window.addEventListener('resize', () => {
@@ -198,6 +219,12 @@
             let buttonCheck = !store.widgetObject?.price;
             let rangeCheck = !(store.widgetObject?.product?.price >= store.widgetObject?.minPrice && store.widgetObject?.product?.price <= store.widgetObject?.maxPrice)
             nextButtonDisabled = buttonCheck && rangeCheck;
+            return;
+        }
+
+        if(store.widgetObject?.step === 'setEmail'){
+
+            nextButtonDisabled = !validateEmail(store.widgetObject?.clientEmail);
             return;
         }
 

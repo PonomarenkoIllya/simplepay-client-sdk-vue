@@ -13,7 +13,7 @@
         </template>
         <template v-else>
 
-            <Drawer v-model:open="store.isDrawerOpen">
+            <Drawer v-model:open="store.isDialogOpen" :dismissible="state.isDrawerDragDisable">
                 <DrawerContent>
                     <Header />
                     <Modal/>
@@ -55,7 +55,8 @@ let mode = useColorMode({
 })
 
 const state = reactive({
-    windowWidth: window.innerWidth
+    windowWidth: window.innerWidth,
+    isDrawerDragDisable: !window.simpleModal.isOpenImmediately
 })
 
 const isDesktop = computed(() => {
@@ -108,7 +109,6 @@ onMounted(async () => {
         const invoiceData = await sp.getInvoice(window.simpleModal.invoiceId);
 
         if(invoiceData){
-
             if(invoiceData.status === 'issued'){
                 window.simpleModal.setInvoice(invoiceData);
                 window.simpleModal.setStep('payment');
@@ -139,15 +139,21 @@ onMounted(async () => {
 
 watch(isDialogOpen, (newValue) => {
 
-    if(!newValue){
+    if(!newValue && window.simpleModal.isOpenImmediately){
+        store.setIsDialogOpen(true);
+        store.setIsDrawerOpen(true);
+    }else if(!newValue && !window.simpleModal.isOpenImmediately){
         store.setIsDrawerOpen(false);
         CloseWidget();
     }
 
 });
 watch(isDrawerOpen, (newValue) => {
-
-    if(!newValue){
+    console.log('watch', newValue)
+    if(!newValue && window.simpleModal.isOpenImmediately){
+        store.setIsDialogOpen(true);
+        store.setIsDrawerOpen(true);
+    }else if(!newValue && !window.simpleModal.isOpenImmediately){
         store.setIsDialogOpen(false);
         CloseWidget();
     }

@@ -3,6 +3,8 @@
 
         <Loader v-if="store.widgetObject.step === 'loading'"/>
 
+        <SetEmail v-if="store.widgetObject.step === 'setEmail'"/>
+
         <ChooseToken v-if="store.widgetObject.step === 'chooseToken'"/>
 
         <SetPrice v-if="store.widgetObject.step === 'setPrice'"/>
@@ -27,6 +29,7 @@
     import {useWidgetStore} from '../pinia'
     import SetPrice from "@/components/pages/SetPrice.vue";
     import Success from "@/components/pages/Success.vue";
+    import SetEmail from "@/components/pages/SetEmail.vue";
 
     const store = useWidgetStore();
 </script>
