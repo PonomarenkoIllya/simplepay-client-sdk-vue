@@ -158,6 +158,7 @@
             "merchantId": store.widgetObject.merchantId,
             "projectId": store.widgetObject.projectId,
             "productId": store.widgetObject?.product.id,
+            "productType": store.widgetObject?.product?.productType || '',
             "tokenId": store.widgetObject.token.id,
             "price": store.widgetObject?.product.price,
             "from": store.widgetObject.address,
